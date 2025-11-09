@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/serv00/schema/main/service.schema.json",
+  "name": "chat-app",
+  "build": {
+    "engine": {
+      "node": "22.x"
+    },
+    "command": "npm run build"
+  },
+  "run": {
+    "command": "npm start"
+  }
+}
