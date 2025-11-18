@@ -7,6 +7,7 @@ import Path from "path";
 import authRoutes from "./routes/auth.route.js";
 
 import path from "path/posix";
+import { connectDB } from "./lib/db.js";
 import messageRoutes from "./routes/message.route.js";
 
 dotenv.config();
@@ -16,6 +17,8 @@ const app = express();
 const __dirname = Path.resolve();
 
 const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
@@ -31,4 +34,7 @@ app.get("*", (_, res) => {
   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
 });
 
-app.listen(PORT, () => console.log("Server running on port: " + PORT));
+app.listen(PORT, () => {
+  console.log("Server running on port: " + PORT);
+  connectDB();
+});
